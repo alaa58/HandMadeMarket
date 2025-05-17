@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../Services/product.service';
 import { CommonModule } from '@angular/common';
@@ -41,5 +42,4 @@ loadProducts() {
       this.products = data;
     });
 }
-
 }

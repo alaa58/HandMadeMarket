@@ -1,3 +1,4 @@
+
 <div class="container py-5">
     <div class="row g-4 align-items-center">
       
@@ -7,7 +8,7 @@
         <button type="button" class="btn btn-primary" (click)="goToNextPage()">&gt;</button>
       </div>
   
-      <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let product of products">
+      <div class="col-sm-6 col-md-4 col-lg-3 text-center" *ngFor="let product of products">
         <div class="card h-100 shadow-sm border-0">
           <img 
             [src]="product.image || 'assets/no-image.png'" 
@@ -16,9 +17,20 @@
             style="height: 200px; object-fit: contain;"
           />
           <div class="card-body d-flex flex-column justify-content-between">
-            <h5 class="card-title text-truncate" title="{{ product.title }}">{{ product.title }}</h5>
-            <p class="card-text fw-bold text-success">{{ product.price | currency }}</p>
-            <p>{{product.rating.rate}}</p>
+            <h3 class="card-title text-truncate" title="{{ product.title }}">{{ product.title }}</h3>
+         
+    <!-- if there is a sale        -->
+<div *ngIf="product.salePercentage > 0; else noSale">
+  <p class="card-text fw-bold price">{{ product.priceAfterSale | currency }}</p>
+  <p class="lead text-decoration-line-through">
+    {{ product.price | currency }}
+  </p>
+</div>
+<!-- if there is no sale -->
+<ng-template #noSale>
+  <p class="card-text fw-bold price">{{ product.price | currency }}</p>
+</ng-template>
+
           </div>
         </div>
       </div>
