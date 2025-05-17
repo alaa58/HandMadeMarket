@@ -9,4 +9,5 @@ export const appConfig: ApplicationConfig = {
      provideRouter(routes, withViewTransitions()),
      provideHttpClient()
     ]
-};
+
+  }
