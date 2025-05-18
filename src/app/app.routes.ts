@@ -28,5 +28,4 @@ export const routes: Routes = [
         { path: 'seller/:id', component: SellerProductsComponent },
 
     ]},
-    {path: '**', component: NotfoundComponent}
-];
+    {path: '**', component: NotfoundComponent}]
