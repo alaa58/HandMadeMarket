@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { CommonModule } from '@angular/common';
 import { registerService } from '../../core/services/register.service';
 import { IRegister } from '../../core/interfaces/iregister';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +21,8 @@ export class RegisterComponent {
 
   constructor(
     private fb: FormBuilder,
-    private registerService: registerService
+    private registerService: registerService,
+    private router: Router
   ) {
     this.registerForm = this.fb.group({
       userName: ['', [Validators.required, Validators.minLength(3)]],
@@ -35,18 +37,29 @@ export class RegisterComponent {
       const formData: IRegister = this.registerForm.value;
 
       this.registerService.register(formData).subscribe({
-        next: () => {
+        next: (response) => {
+          console.log('Registration response:', response);
           this.registrationSuccess = true;
           this.errorMessage = '';
           this.registerForm.reset();
+          if (response === 'Account Created & Role Assigned') {
+            alert('Registration successful!');
+            setTimeout(() => {
+              this.router.navigate(['/login']);
+            }, 1000);
+          }
+
         },
         error: (error) => {
-          console.error('Registration error:', error); 
+          console.error('Registration error:', error);
           this.errorMessage = error.error?.message || JSON.stringify(error.error) || 'Registration failed. Please try again.';
           this.registrationSuccess = false;
         }
 
       });
+    }
+    else {
+      this.registerForm.markAllAsTouched()
     }
   }
 }
