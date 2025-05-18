@@ -1,1 +1,30 @@
-<p>categories works!</p>
+<div class="container mt-4">
+  <h2 class="mb-3">Select a Category</h2>
+
+  <select class="form-select" [(ngModel)]="selectedCategoryId" (change)="onCategoryChange()">
+    <option value="0" disabled>Select a category</option>
+    <option *ngFor="let category of categories" [value]="category.categoryId">
+      {{ category.name }}
+    </option>
+  </select>
+
+  <div *ngIf="selectedCategoryProducts.length > 0" class="mt-4">
+    <h3>Products:</h3>
+    <div class="row">
+      <div *ngFor="let product of selectedCategoryProducts" class="col-md-4 mb-3">
+        <div class="card">
+          <img [src]="'https://handmade.runasp.net' + product.image" class="card-img-top" alt="{{ product.name }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.description }}</p>
+            <p class="card-text fw-bold">{{ product.priceAfterSale }} EGP</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="selectedCategoryProducts.length === 0 && selectedCategoryId != 0" class="mt-3 text-muted">
+    No products available for this category.
+  </div>
+</div>
