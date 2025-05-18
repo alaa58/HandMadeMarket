@@ -5,10 +5,12 @@ import { RouterOutlet } from '@angular/router';
 
 import { ProductComponent } from './components/product/product.component';
 import { FooterComponent } from "./components/footer/footer.component";
+import { HomeComponent } from "./components/home/home.component";
+import { SellersComponent } from "./components/sellers/sellers.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,ReactiveFormsModule, FormsModule,  ProductComponent, FooterComponent],
+  imports: [RouterOutlet, ReactiveFormsModule, FormsModule, ProductComponent, FooterComponent, HttpClientModule, HomeComponent, SellersComponent],
 
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
