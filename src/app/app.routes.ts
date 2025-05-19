@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductComponent } from './components/product/product.component';
 import { SellersComponent } from './components/sellers/sellers.component';
 import { SellerProductsComponent } from './components/seller-products/seller-products.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 export const routes: Routes = [
     {path:'', component: AuthLayoutComponent, children:[
@@ -26,6 +27,7 @@ export const routes: Routes = [
         {path:'product', component:ProductComponent},
         {path:'sellers', component:SellersComponent},
         { path: 'seller/:id', component: SellerProductsComponent },
+        { path: 'product-details/:id', component: ProductDetailsComponent }
 
     ]},
     {path: '**', component: NotfoundComponent}]

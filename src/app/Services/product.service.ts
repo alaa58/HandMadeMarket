@@ -9,7 +9,8 @@ import { IProduct } from '../models/product.model';
 export class ProductService {
 productList:any[]=[];
   constructor( private http:HttpClient) { }
-baseUrl=" https://fakestoreapi.com/products";
+baseUrl="'https://handmade.runasp.net/api/Product";
+//https://fakestoreapi.com/products";
 
 getAllProducts(pageNumber: number, pageSize: number): Observable<any[]> {
    return this.http.get<any[]>(this.baseUrl, {
