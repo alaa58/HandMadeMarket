@@ -31,7 +31,7 @@ export class ProductDetailsComponent implements  OnInit{
       next:(p)=>{
         console.log(p);
         let product_id= p.get('id');
-        this._ProductService.getProductById(product_id).subscribe({
+        this._ProductService.getById(1).subscribe({
           next:(res)=>{
             console.log(res);
             this.detailsProductObj= res;
