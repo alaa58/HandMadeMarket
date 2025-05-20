@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IProduct } from '../models/product.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -21,13 +22,17 @@ getAllProducts(pageNumber: number, pageSize: number): Observable<{ data: IProduc
   });
 }
 
-getById(productId:number):Observable<IProduct>{
+getById(productId:string):Observable<IProduct>{
   return this.http.get<IProduct>(`${this.baseUrl}/${productId}`);
 }
+
 getSaledProducts():Observable<IProduct[]>{
  return this.http.get<IProduct[]>(`${this.baseUrl}/sale`);
 }
 
 
+getProductById(id:number):Observable<any>{
+  return this.http.get(`${environment.apiBaseUrl}/Product/${id}`)
+}
 //all any will replace by Iproduct
 }
