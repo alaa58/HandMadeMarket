@@ -9,6 +9,7 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductComponent } from './components/product/product.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 export const routes: Routes = [
   {
@@ -28,6 +29,7 @@ export const routes: Routes = [
       { path: 'categories', component: CategoriesComponent },
       { path: 'home', component: HomeComponent },
       { path: 'product', component: ProductComponent },
+      {path: 'checkout', component: CheckoutComponent}
     ]
   },
   { path: '**', component: NotfoundComponent }
