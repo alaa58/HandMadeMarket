@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { LoginService } from '../../core/services/login.service';
 import { ILogin } from '../../core/interfaces/ilogin';
 import { Router } from '@angular/router';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -41,10 +42,23 @@ export class LoginComponent {
         
         if (response && response.token) {
           localStorage.setItem('token', response.token);
-          this.router.navigate(['/home']);
-        } else {
+
+          const decodedToken : any = jwtDecode(response.token);
+          const userRole = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+
+          if(userRole === 'Seller')
+          {
+            this.router.navigate(['/seller']);
+          }
+          else{
+            this.router.navigate(['/home']);
+          }
+          
+        } else{
           this.errorMessage = 'Login succeeded but token missing.';
         }
+          
+        
       },
       error: (error) => {
         console.error('Login error:', error);
