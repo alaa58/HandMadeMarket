@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../Services/product.service';
 import { IProduct } from '../../models/product.model';
-
 @Component({
   selector: 'app-product-details',
   imports: [CommonModule],
@@ -17,21 +16,12 @@ export class ProductDetailsComponent implements  OnInit{
   private readonly  _ActivatedRoute = inject(ActivatedRoute)
   private readonly  _ProductService= inject(ProductService)
   detailsProductObj:IProduct ={} as IProduct;
-  //   id: 0,
-  //   name: '',
-  //   price: 0,
-  //   stock: 0,
-  //   description: '',
-  //   image: '',
-  //   salePercentage: 0,
-  //   priceAfterSale: 0
-  // };
   ngOnInit(): void {
     this._ActivatedRoute.paramMap.subscribe({
       next:(p)=>{
         console.log(p);
         let product_id= p.get('id');
-        this._ProductService.getById(1).subscribe({
+        this._ProductService.getProductById(Number(product_id)).subscribe({
           next:(res)=>{
             console.log(res);
             this.detailsProductObj= res;

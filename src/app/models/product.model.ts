@@ -1,5 +1,5 @@
 export interface IProduct{
-    id:number,
+    productId:number,
     name:string,
     price:number,
     stock:number,
