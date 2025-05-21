@@ -4,9 +4,12 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../Services/product.service';
 import { IProduct } from '../../models/product.model';
+
+import { ReviewsComponent } from '../reviews/reviews.component';
+
 @Component({
   selector: 'app-product-details',
-  imports: [CommonModule],
+  imports: [CommonModule,ReviewsComponent],
   standalone: true,
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css']

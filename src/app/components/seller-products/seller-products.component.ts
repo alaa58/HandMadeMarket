@@ -3,12 +3,13 @@ import { ActivatedRoute } from '@angular/router';
 import { GetsellersService } from '../../core/services/getsellers.service';
 import { IProduct, ISeller } from '../../core/interfaces/iseller';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-seller-products',
   templateUrl: './seller-products.component.html',
   styleUrls: ['./seller-products.component.css'],
-  imports:[CommonModule]
+  imports:[CommonModule,FormsModule]
 })
 export class SellerProductsComponent implements OnInit {
   products:ISeller={ 
