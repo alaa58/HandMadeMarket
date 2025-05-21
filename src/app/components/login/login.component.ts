@@ -48,7 +48,7 @@ export class LoginComponent {
 
           if(userRole === 'Seller')
           {
-            this.router.navigate(['/seller']);
+            this.router.navigate(['/Seller']);
           }
           else{
             this.router.navigate(['/home']);
