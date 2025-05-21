@@ -14,6 +14,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { SellerLayoutComponent } from './layout/seller-layout/seller-layout.component';
 import { SellerdashboardComponent } from './components/sellerdashboard/sellerdashboard.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { AddproductComponent } from './components/addproduct/addproduct.component';
 
 export const routes: Routes = [
   {
@@ -42,7 +43,8 @@ export const routes: Routes = [
     component: SellerLayoutComponent,
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard', component: SellerdashboardComponent }
+      { path: 'dashboard', component: SellerdashboardComponent },
+      {path: 'addproduct', component: AddproductComponent}
     ]
   },
 
