@@ -3,7 +3,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { registerService } from '../../core/services/register.service';
+import { RegisterService } from '../../core/services/register.service';
 import { IRegister } from '../../core/interfaces/iregister';
 import { Router } from '@angular/router';
 
@@ -21,14 +21,14 @@ export class RegisterComponent {
 
   constructor(
     private fb: FormBuilder,
-    private registerService: registerService,
+    private registerService: RegisterService,
     private router: Router
   ) {
     this.registerForm = this.fb.group({
       userName: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      role: ['user', Validators.required]
+      role: ['Customer', Validators.required]
     });
   }
 

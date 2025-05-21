@@ -38,7 +38,7 @@ export const routes: Routes = [
     ]
   },
   {
-    path: 'seller',
+    path: 'Seller',
     component: SellerLayoutComponent,
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
