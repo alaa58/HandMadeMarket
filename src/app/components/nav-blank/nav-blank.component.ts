@@ -1,7 +1,7 @@
 import { CartComponent } from './../cart/cart.component';
 import { CartService } from './../../core/services/cart.service';
 import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive,Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-blank',
@@ -31,5 +31,13 @@ ngOnInit() {
         this.cartItems = cart;
       });
     }
+export class NavBlankComponent {
+ constructor(private router: Router) {} 
+
+  signOut() {
+    localStorage.removeItem('authToken');
+    this.router.navigate(['/login']); 
+  }
+}
   }
 }

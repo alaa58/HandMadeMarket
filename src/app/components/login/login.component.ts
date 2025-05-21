@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { LoginService } from '../../core/services/login.service';
 import { ILogin } from '../../core/interfaces/ilogin';
 import { Router } from '@angular/router';
-import { jwtDecode } from 'jwt-decode';
+import { jwtDecode } from  'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -48,7 +48,7 @@ export class LoginComponent {
 
           if(userRole === 'Seller')
           {
-            this.router.navigate(['/seller']);
+            this.router.navigate(['/Seller/dashboard']);
           }
           else{
             this.router.navigate(['/home']);

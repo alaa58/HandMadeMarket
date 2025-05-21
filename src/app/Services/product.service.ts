@@ -8,6 +8,12 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class ProductService {
+  getCategories() {
+    throw new Error('Method not implemented.');
+  }
+  addProduct(formData: FormData) {
+    throw new Error('Method not implemented.');
+  }
 productList:IProduct[]=[];
 saledProductList:IProduct[]=[];
   constructor( private http:HttpClient) { }

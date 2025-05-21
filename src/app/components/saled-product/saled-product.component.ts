@@ -11,8 +11,8 @@ import { ProductCardComponent } from '../../shared/product-card/product-card.com
   styleUrl: './saled-product.component.css'
 })
 export class SaledProductComponent {
-  products: IProduct[] = []; // كل المنتجات
-  saledProductList: IProduct[] = []; // المنتجات المعروضة في الصفحة الحالية
+  products: IProduct[] = []; 
+  saledProductList: IProduct[] = []; 
   pageNumber: number = 1;
   pageSize: number = 4;
   totalPages: number = 0;
@@ -55,6 +55,6 @@ export class SaledProductComponent {
 
   addToCart(product: IProduct) {
 
-    console.log("تمت الإضافة:", product);
+    
   }
 }

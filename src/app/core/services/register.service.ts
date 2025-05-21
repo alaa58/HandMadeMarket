@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class registerService {
+export class RegisterService {
   private apiUrl = `${environment.apiBaseUrl}/Account/register`;
 
   constructor(private http:HttpClient) {}
