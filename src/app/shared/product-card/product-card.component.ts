@@ -14,13 +14,13 @@ import { CartService } from '../../core/services/cart.service';
 export class ProductCardComponent implements OnInit{
   private readonly _CartService=inject(CartService)
   ngOnInit(): void {
-  console.log('🟡 Received product in ProductCardComponent:', this.product);
+  console.log(' Received product in ProductCardComponent:', this.product);
   }
   @Input() product!: IProduct;
   @Output() addToCartClicked = new EventEmitter<IProduct>();
 
-  addToCart(id:number) {
-    this._CartService.addProductToCart(id).subscribe({
+  addToCart(id:number,quantity: number) {
+    this._CartService.addProductToCart(id,quantity).subscribe({
       next:(res)=>{
         console.log(res)
       },

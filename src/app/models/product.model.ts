@@ -7,6 +7,5 @@ export interface IProduct{
     image:string,
     salePercentage:number,
     priceAfterSale:number
-
 }
 

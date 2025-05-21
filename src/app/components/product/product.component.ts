@@ -7,7 +7,7 @@ import { ProductCardComponent } from "../../shared/product-card/product-card.com
 
 @Component({
   selector: 'app-product',
-  imports: [CommonModule, ProductCardComponent],
+  imports: [CommonModule,ProductCardComponent],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })

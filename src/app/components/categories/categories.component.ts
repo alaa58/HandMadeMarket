@@ -36,8 +36,8 @@ private readonly _CartService=inject(CartService)
     this.selectedCategoryProducts = selectedCategory ? selectedCategory.products : [];
   }
 
-  AddToCart(id:number){
-       this._CartService.addProductToCart(id).subscribe({
+  AddToCart(id:number,quentity:number){
+       this._CartService.addProductToCart(id,quentity).subscribe({
       next:(res)=>{
         console.log(res)
       },
