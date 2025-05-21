@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 import { BlankLayoutComponent } from './layout/blank-layout/blank-layout.component';
-import { NotfoundComponent } from './components/notfound/notfound.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { CartComponent } from './components/cart/cart.component';
@@ -11,8 +10,6 @@ import { ProductComponent } from './components/product/product.component';
 import { SellersComponent } from './components/sellers/sellers.component';
 import { SellerProductsComponent } from './components/seller-products/seller-products.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
-import { SellerLayoutComponent } from './layout/seller-layout/seller-layout.component';
-import { SellerdashboardComponent } from './components/sellerdashboard/sellerdashboard.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 
 export const routes: Routes = [
@@ -35,16 +32,4 @@ export const routes: Routes = [
       { path: 'product-details/:id', component: ProductDetailsComponent },
       { path: 'checkout', component: CheckoutComponent },
 
-    ]
-  },
-  {
-    path: 'seller',
-    component: SellerLayoutComponent,
-    children: [
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard', component: SellerdashboardComponent }
-    ]
-  },
-
-  { path: '**', component: NotfoundComponent }]
-
+    ]}]
