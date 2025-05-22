@@ -5,6 +5,7 @@ import { IProduct, ISeller } from '../../core/interfaces/iseller';
 import { CommonModule } from '@angular/common';
 import { jwtDecode } from 'jwt-decode';
 import { RouterLink } from '@angular/router';
+import { ProductService } from '../../Services/product.service';
 @Component({
   selector: 'app-sellerdashboard',
   imports: [CommonModule,RouterLink],
@@ -14,7 +15,7 @@ import { RouterLink } from '@angular/router';
 export class SellerdashboardComponent {
   productsList: IProduct[] = [];
 
-  constructor(private sellerService: GetsellersService,) {}
+  constructor(private sellerService: GetsellersService,private productService:ProductService) {}
 
   ngOnInit(): void {
     const token = localStorage.getItem('token');
@@ -37,9 +38,18 @@ export class SellerdashboardComponent {
       }
     }
   }
-  deleteProduct(id:any){
-    
-  }
+deleteProduct(id: any) {
+  this.productService.deleteProductById(id).subscribe({
+    next: (res) => {
+      
+      this.productsList = this.productsList.filter(product => product.productId !== id); // Reload the updated list from the server
+      console.log("Product deleted:", res);
+    },
+    error: (error) => {
+      console.log("Error deleting product:", error);
+    }
+  });
+}
 }
 
 

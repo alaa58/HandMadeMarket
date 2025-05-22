@@ -40,5 +40,8 @@ getSaledProducts():Observable<IProduct[]>{
 getProductById(id:number):Observable<any>{
   return this.http.get(`${environment.apiBaseUrl}/Product/${id}`)
 }
+deleteProductById(id:number):Observable<any>{
+  return this.http.delete(`${environment.apiBaseUrl}/Product/${id}`)
+}
 //all any will replace by Iproduct
 }
