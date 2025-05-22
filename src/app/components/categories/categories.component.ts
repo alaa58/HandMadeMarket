@@ -22,6 +22,7 @@ export class CategoriesComponent implements OnInit {
 private readonly _CartService=inject(CartService)
   ngOnInit(): void {
     this.getCategories();
+    
   }
 
   getCategories() {

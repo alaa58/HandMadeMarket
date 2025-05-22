@@ -43,7 +43,7 @@
           <div class="price-section mb-4">
             <div *ngIf="detailsProductObj.salePercentage > 0" class="d-flex align-items-baseline">
               <span class="text-muted me-2" style="text-decoration: line-through; font-size: 1.2rem;">
-                {{ detailsProductObj.price | currency }}
+                {{ totalPrice | currency }}
               </span>
               <span class="fw-bold ms-2" style="font-size: 1.8rem; color: RGB(187, 119, 84);">
                 {{ detailsProductObj.priceAfterSale | currency }}
@@ -59,12 +59,12 @@
           <!-- Action Buttons -->
           <div class="d-flex gap-3 mb-4">
             <div class="quantity-selector d-flex align-items-center border rounded-pill">
-              <button class="btn px-3 py-1" style="color: RGB(187, 119, 84);">−</button>
-              <span class="px-3">1</span>
-              <button class="btn px-3 py-1" style="color: RGB(187, 119, 84);">+</button>
+              <button class="btn px-3 py-1" style="color: RGB(187, 119, 84);" (click)="decrementProduct()">−</button>
+              <span class="px-3" >{{quantity}}</span>
+              <button class="btn px-3 py-1" style="color: RGB(187, 119, 84);" (click)="incrementproduct()">+</button>
             </div>
             <button class="btn flex-grow-1 py-2 rounded-pill text-white" 
-                    style="background-color: RGB(187, 119, 84);" (click)="AddToCart(detailsProductObj.stock)">
+                    style="background-color: RGB(187, 119, 84);" (click)="AddToCart(quantity)">
               <i class="bi bi-cart-plus me-2"></i>Add to Cart
             </button>
           </div>

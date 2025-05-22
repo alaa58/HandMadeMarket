@@ -5,7 +5,7 @@
       <i class="fas fa-shopping-cart me-2"></i>Shop Cart
     </h2>
     <div class="total-price bg-light p-3 rounded" style="border: 1px solid RGB(137, 150, 129);">
-      <span class="fw-bold me-2">Total Cart Price:</span>
+      <span class="fw-bold me-2">Total Price:</span>
       <span class="h4" style="color: RGB(187, 119, 84);">{{totalPrice}} <small>EGP</small></span>
     </div>
   </div>
@@ -34,14 +34,15 @@
             <!-- Quantity Adjuster -->
             <div class="quantity-adjuster d-flex align-items-center me-3">
               <button class="btn btn-sm quantity-btn minus" 
-                      style="background-color: RGB(137, 150, 129); color: white;">
+                      style="background-color: RGB(137, 150, 129); color: white;" (click)="decrementProduct(cart)">
                 <i class="fas fa-minus"></i>
               </button>
               <span class="mx-2" style="min-width: 20px; text-align: center;">
-                {{ cart.quantity || 1 }}
+               {{ cart.quantity }}
+
               </span>
               <button class="btn btn-sm quantity-btn plus" 
-                      style="background-color: RGB(137, 150, 129); color: white;">
+                      style="background-color: RGB(137, 150, 129); color: white;" (click)="incrementProduct(cart)">
                 <i class="fas fa-plus"></i>
               </button>
             </div>

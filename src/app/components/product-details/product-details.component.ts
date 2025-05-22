@@ -7,6 +7,7 @@ import { IProduct } from '../../models/product.model';
 import { CartService } from '../../core/services/cart.service';
 
 import { ReviewsComponent } from '../reviews/reviews.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-details',
@@ -21,8 +22,13 @@ export class ProductDetailsComponent implements  OnInit{
   private readonly  _ProductService= inject(ProductService)
   private readonly _CartService=inject(CartService)
   productId!: number;
+quantity: number = 1;
+totalPrice: number = 0;
+originalTotalPrice: number = 0; 
+finalTotalPrice: number = 0;   
 
   detailsProductObj:IProduct ={} as IProduct;
+
   ngOnInit(): void {
     this._ActivatedRoute.paramMap.subscribe({
       next:(p)=>{
@@ -33,6 +39,7 @@ export class ProductDetailsComponent implements  OnInit{
           next:(res)=>{
             console.log(res);
             this.detailsProductObj= res;
+this.calculatePrices();
           },
           error:(err)=>{
             console.log(err);
@@ -42,6 +49,10 @@ export class ProductDetailsComponent implements  OnInit{
     })
   }
 
+  calculatePrices(): void {
+  this.originalTotalPrice = this.detailsProductObj.price * this.quantity;
+  this.finalTotalPrice = this.detailsProductObj.priceAfterSale * this.quantity;
+}
 AddToCart(quentity:number){
   this._CartService.addProductToCart(this.productId,quentity).subscribe({
       next:(res)=>{
@@ -51,5 +62,25 @@ AddToCart(quentity:number){
         console.log(err)
       }
     })
+}
+incrementproduct():void{
+  if(this.detailsProductObj.stock>this.quantity){
+  this.quantity++;
+this.calculatePrices();
+  }
+  else{
+  Swal.fire({
+  icon: 'warning',
+  title: 'Cannot Increase Quantity',
+  text: `Only ${this.detailsProductObj.stock} item(s) available in stock.`,
+  confirmButtonText: 'OK'
+});
+  }
+}
+decrementProduct():void{
+  if(this.detailsProductObj.stock>this.quantity && this.quantity>1){
+  this.quantity--;
+this.calculatePrices();
+  }
 }
 }
